@@ -1,5 +1,8 @@
 package com.mycompany.edafinal;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.io.IOException;
 import java.util.Random;
 
 public class Game {
@@ -178,35 +181,50 @@ public class Game {
     return randomNumber;
   }
 
-  public void printMap() {
-    printTree(tree.getArray(), 0, 0);
+  public void showMap() {
+    int[] array = tree.getArray();
+    int depth = (int) (Math.log(array.length) / Math.log(2)) + 1;
+
+    for (int level = 0; level < depth; level++) {
+      int levelStartIndex = (int) Math.pow(2, level) - 1;
+      int levelEndIndex = (int) Math.pow(2, level + 1) - 1;
+      int levelWidth = (int) Math.pow(2, depth - level - 1);
+
+      // Espacios iniciales
+      for (int i = 0; i < levelWidth - 1; i++) {
+        System.out.print("  ");
+      }
+
+      // Imprimir nodos y espacios entre ellos
+      for (int i = levelStartIndex; i < levelEndIndex && i < array.length; i++) {
+        if (array[i] != 0) {
+          if (array[i] == getPlayerValue()) {
+            System.out.printf("**");
+          } else {
+            System.out.printf("%2d", array[i]);
+          }
+        }
+
+        for (int j = 0; j < levelWidth * 2 - 1; j++) {
+          System.out.print("  ");
+        }
+      }
+
+      // Salto de línea al terminar un nivel del árbol
+      System.out.println();
+    }
+    System.out.println("Ud. está aquí: **");
   }
 
-  public void printTree(int[] arr, int index, int level) {
-    if (index >= arr.length) {
-      return;
+  public void clearScreen() throws IOException {
+    try {
+      Robot pressbot = new Robot();
+      pressbot.keyPress(17); // Holds CTRL key.
+      pressbot.keyPress(76); // Holds L key.
+      pressbot.keyRelease(17); // Releases CTRL key.
+      pressbot.keyRelease(76); // Releases L key.
+    } catch (AWTException e) {
+      System.out.println(e);
     }
-
-    // Imprimir subárbol derecho
-    printTree(arr, 2 * index + 2, level + 1);
-
-    // Espaciado basado en el nivel
-    for (int i = 0; i < level; i++) {
-      System.out.print("\t");
-    }
-
-    // Imprimir el valor del nodo
-    if (getPlayerValue() == arr[index]) {
-      System.out.print(arr[index] + "*");
-    } else {
-
-      System.out.print(arr[index]);
-    }
-
-    // Imprimir una nueva línea para separar los niveles
-    System.out.print("\n");
-
-    // Imprimir subárbol izquierdo
-    printTree(arr, 2 * index + 1, level + 1);
   }
 }
