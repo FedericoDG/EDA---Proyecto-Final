@@ -57,19 +57,22 @@ public final class Tree {
   public void fillNodes() {
     // Lista de números en el orden específico para llenar todas las ramas del
     // árbol binario, de manera tal que el árbol quede equilibrado
-    int[] values = new int[]{16, 8, 24, 4, 12, 20, 28, 2, 6, 10, 14, 18, 22, 26, 30, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31};
 
-    //    int[] values = new int[]{
-    //      32, 16, 48, 8, 24, 40, 56, 4, 12, 20, 28, 36, 44, 52, 60,
-    //      2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50, 54, 58, 62,
-    //      1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31,
-    //      33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63
-    //    };
+    // int[] values = new int[]{16, 8, 24, 4, 12, 20, 28, 2, 6, 10, 14, 18, 22, 26, 30, 1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31};
+    int[] values = new int[]{
+      32, 16, 48, 8, 24, 40, 56, 4, 12, 20, 28, 36, 44, 52, 60,
+      2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50, 54, 58, 62,
+      1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31,
+      33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53, 55, 57, 59, 61, 63
+    };
     for (int value : values) {
       insert(0, value);
     }
   }
 
+  /**
+   * Imprime el arreglo que representa el árbol binario.
+   */
   public void print() {
     System.out.print("[");
     for (int i = 0; i < array.length; i++) {
@@ -78,5 +81,4 @@ public final class Tree {
     System.out.print("]");
     System.out.println("");
   }
-
 }
