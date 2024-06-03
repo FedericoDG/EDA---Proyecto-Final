@@ -216,7 +216,8 @@ public class Game {
   }
 
   /**
-   * Imprime un mensaje dependiendo del id proporcionado.
+   * Imprime un mensaje aleatorio dependiendo del id proporcionado y de un
+   * número random generado dentro del método.
    *
    * @param id El id del mensaje a imprimir.
    */
