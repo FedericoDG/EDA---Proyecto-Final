@@ -24,6 +24,7 @@ public class EDAFinal {
       System.out.println("i. Instrucciones");
       System.out.println("m. Ver el Mapa");
       System.out.println("p. Ver la cantidad de movimientos hechos");
+      System.out.println("r. Ver la ruta recorrida hasta el momento");
       System.out.println("");
       System.out.println("a. Mover a la izquierda");
       System.out.println("d. Mover a la derecha");

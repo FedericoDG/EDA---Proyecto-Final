@@ -3,6 +3,7 @@ package com.mycompany.edafinal;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
@@ -12,6 +13,7 @@ public class Game {
   private final int treasurePosition; // Posición del tesoro (aleatoria entre 15 y 31, que son los nodos 'hoja')
   private boolean wrongDirection; // Bandera que marca dirección equivocada, e impide seguir avanzando en esa dirección
   private int moves; // Cantidad de movimientos realizados (insistir en una dirección incorrecta no suma movimientos)
+  private ArrayList<Integer> route; // Array con la ruta recorrida por el jugador
 
   public Game() {
     tree = new Tree();
@@ -20,6 +22,7 @@ public class Game {
     // treasurePosition = 21; // Esconde el tesoro en la isla con el valor 13
     wrongDirection = false;
     moves = 0;
+    route = new ArrayList<>();
   }
 
   /**
@@ -106,10 +109,12 @@ public class Game {
       if (getParentValue() < getTreasureValue() && getPlayerValue() < getParentValue()) {
         wrongDirection = true;
 
+        // pushear array el valor getParentValue()
         return 2;
       }
     }
 
+    // pushear array el valor getParentValue()
     return 1;
   }
 
@@ -137,11 +142,12 @@ public class Game {
 
       if (getParentValue() > getTreasureValue() && getPlayerValue() > getParentValue()) {
         wrongDirection = true;
-
+        // pushear array el valor getParentValue()
         return 2;
       }
     }
 
+    // pushear array el valor getParentValue()
     return 1;
   }
 
@@ -158,6 +164,7 @@ public class Game {
     wrongDirection = false;
     moves++;
 
+    // pushear array el valor getParentValue()
     return 4;
   }
 
@@ -306,6 +313,7 @@ public class Game {
             System.out.println("Créditos:");
             System.out.println("* Federico González, programador y capitán del teclado en busca del código perdido en los océanos binarios.");
             System.out.println("* Blas Haberland, co-capitán del desarrollo y maestro del diseño, experto en esquivar bugs como un verdadero corsario esquiva cañonazos.");
+            System.out.println("for del array 32, 15");
             System.exit(0);
           }
         }
